@@ -7,9 +7,9 @@ commands:
   notify_on_failure:
     steps:
       - slack/notify
-          event:fail
-          channel:cicd
-          template:basic_fail_1
+          event: fail
+          channel: cicd
+          template: basic_fail_1
 
 # commands:
 #   destroy-environment:
@@ -314,8 +314,8 @@ jobs:
     steps:
       - slack_notify:
           event: pass
-          channel:cicd
-          template:success_tagged_deployment_1
+          channel: cicd
+          template: success_tagged_deployment_1
 
 workflows:
   default:
