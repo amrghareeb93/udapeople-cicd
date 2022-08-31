@@ -308,14 +308,14 @@ jobs:
 #               # your code here
 #             fi
             
-  notify_on_success:
-    docker:
-      - image:cimg/base:stable
-    steps:
-      - slack_notify:
-          event: pass
-          channel: cicd
-          template: success_tagged_deployment_1
+  # notify_on_success:
+  #   docker:
+  #     - image:cimg/base:stable
+  #   steps:
+  #     - slack_notify:
+  #         event: pass
+  #         channel: cicd
+  #         template: success_tagged_deployment_1
 
 workflows:
   default:
