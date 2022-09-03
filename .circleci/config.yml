@@ -15,7 +15,6 @@ commands:
           template: basic_fail_1
 
 
-commands:
     install_awscli:
       description: Install AWS CLI v2
       steps:
