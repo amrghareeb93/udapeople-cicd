@@ -25,7 +25,7 @@ commands:
 orbs:
   slack: circleci/slack@4.9.3
 
-commands:
+# commands:
   notify_on_failure:
     steps:
       - slack/notify:
