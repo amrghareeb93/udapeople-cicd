@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@4.9.3
+
 commands:
     install_awscli:
       description: Install AWS CLI v2
@@ -20,12 +23,7 @@ commands:
               sudo apt install software-properties-common
               sudo add-apt-repository --yes --update ppa:ansible/ansible
               sudo apt install ansible
-
-
-orbs:
-  slack: circleci/slack@4.9.3
-
-# commands:
+              
     notify_on_failure:
       steps:
         - slack/notify:
