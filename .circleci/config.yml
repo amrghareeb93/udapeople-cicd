@@ -12,16 +12,16 @@ commands:
               sudo ./aws/install          
 
 
-orbs:
-  slack: circleci/slack@4.9.3
+# orbs:
+#   slack: circleci/slack@4.9.3
 
-commands:
-  notify_on_failure:
-    steps:
-      - slack/notify:
-          event: fail
-          channel: cicd
-          template: basic_fail_1
+# commands:
+#   notify_on_failure:
+#     steps:
+#       - slack/notify:
+#           event: fail
+#           channel: cicd
+#           template: basic_fail_1
 
 
 
