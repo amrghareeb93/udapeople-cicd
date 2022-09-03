@@ -1,10 +1,19 @@
 version: 2.1
 
+commands:
+    install_awscli:
+      description: Install AWS CLI v2
+      steps:
+        - run:
+            name: Install AWS CLI v2
+            commands:  |
+              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+              unzip awscliv2.zip
+              sudo ./aws/install          
+
+
 orbs:
   slack: circleci/slack@4.9.3
-
-
-
 
 commands:
   notify_on_failure:
@@ -15,15 +24,6 @@ commands:
           template: basic_fail_1
 
 
-    install_awscli:
-      description: Install AWS CLI v2
-      steps:
-        - run:
-            name: Install AWS CLI v2
-            commands:  |
-              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-              unzip awscliv2.zip
-              sudo ./aws/install          
 
 # commands:
 #   destroy-environment:
