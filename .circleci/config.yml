@@ -237,7 +237,7 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - install_ansible
+      # - install_ansible
       - run:
           name: Run migrations
           command: |
