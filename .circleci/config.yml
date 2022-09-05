@@ -237,33 +237,33 @@ jobs:
 
 
 
-    run-migrations:
-      docker:
-        - image: sleavely/node-awscli:14.x
-      steps:
-        - checkout
-        - restore_cache:
-            keys:
-              - build-backend
-        - run:
-            name: Run migrations
-            command: |
-              cd backend
-              # cat .env
-              npm i
-              npm run build
-              npm run migrations > migrations_dump.txt
-              cat migrations_dump.txt
-              
-        - run:
-            name: Sending migration status to kvdb
-            command: |
-              if grep -q "has been executed successfully"  ./backend/migrations_dump.txt   
-              then
-                curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '20'
-              else
-                curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '21'
-              fi
+  run-migrations:
+    docker:
+      - image: sleavely/node-awscli:14.x
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - build-backend
+      - run:
+          name: Run migrations
+          command: |
+            cd backend
+            # cat .env
+            npm i
+            npm run build
+            npm run migrations > migrations_dump.txt
+            cat migrations_dump.txt
+            
+      - run:
+          name: Sending migration status to kvdb
+          command: |
+            if grep -q "has been executed successfully"  ./backend/migrations_dump.txt   
+            then
+              curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '20'
+            else
+              curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '21'
+            fi
 
   # run-migrations:
   #   docker:
