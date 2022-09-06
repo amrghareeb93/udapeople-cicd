@@ -260,10 +260,10 @@ jobs:
                 echo "failed"
             fi
 
-  deploy_frontend:
-      docker:
-        - image: cimg/base:stable
-      steps:
+  deploy-frontend:
+    docker:
+      - image: cimg/base:stable
+    steps:
         - checkout
         - install_awscli
         - install_nodejs
@@ -286,7 +286,7 @@ jobs:
         - persist_to_workspace:
             root: ~/
             paths:
-              - project/frontend/.env
+              - project/frontend/.env              
         - run:
             name: Deploy frontend objects
             command: |
@@ -295,7 +295,8 @@ jobs:
               aws s3 cp dist s3://udapeople-prod-${CIRCLE_WORKFLOW_ID:0:7} --recursive
         - destroy_environment
         - revert-migrations
-
+      # Here's where you will add some code to rollback on failure      
+                    
 #   deploy-backend:
 #     docker:
 #       # Docker image here that supports Ansible
