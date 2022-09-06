@@ -258,8 +258,8 @@ jobs:
               echo "success"
               touch ~/project/.circleci/outputs/db_migration_success
             else
-                curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '0'
-                echo "failed"
+              curl https://kvdb.io/${KVDB_BUCKET}/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '0'
+              echo "failed"
             fi
 
   # run-migrations:
