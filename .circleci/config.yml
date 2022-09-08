@@ -390,7 +390,7 @@ jobs:
           name: Store old WorkFlow ID.
           command: |
             export Old_Workflow_ID=$(aws cloudformation \
-                      list-exports --query "Exports[?Name==`WorkflowID`].Value" \
+                      list-exports --query "Exports[?Name==\`UdapeopleWorkflowID\`].Value" \
                       --no-paginate --output text)
             echo "Old WorkFlow ID : ${Old_Workflow_ID}"          
             curl https://kvdb.io/${KVDB_BUCKET}/OldWorkflowID -d "${Old_Workflow_ID}"
