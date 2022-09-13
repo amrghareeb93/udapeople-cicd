@@ -415,7 +415,7 @@ jobs:
         - attach_workspace:
               at: ~/
         - run:
-            name: Remove old stacks And files
+            name: Remove old stacks and files
             command: |
               export STACKS=($(aws cloudformation list-stacks \
                   --query "StackSummaries[*].StackName" \
